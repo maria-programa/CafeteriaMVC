@@ -6,12 +6,27 @@ public class Comida extends Producto {
     private TipoComida tipoComida;
     private String[] ingredientes;
 
-    public Comida() {
+    public Comida() {}
 
+    public Comida(TipoComida tipoComida, String[] ingredientes) {
+        this.tipoComida = tipoComida;
+        this.ingredientes = ingredientes;
     }
 
-    public Comida(String nombre, double precio, LocalDate fechaCaducidad, boolean enStock, boolean conDescuento, TipoComida tipoComida, String[] ingredientes) {
-        super(nombre, precio, fechaCaducidad, enStock, conDescuento);
+    public Comida(String factura, String nombre, double precio, TipoComida tipoComida, String[] ingredientes) {
+        super(factura, nombre, precio);
+        this.tipoComida = tipoComida;
+        this.ingredientes = ingredientes;
+    }
+
+    public Comida(String factura, String nombre, double precio, boolean enStock, LocalDate fechaCaducidad, TipoComida tipoComida, String[] ingredientes) {
+        super(factura, nombre, precio, enStock, fechaCaducidad);
+        this.tipoComida = tipoComida;
+        this.ingredientes = ingredientes;
+    }
+
+    public Comida(String factura, String nombre, double precio, boolean enStock, LocalDate fechaCaducidad, boolean conDescuento, int descuento, TipoComida tipoComida, String[] ingredientes) {
+        super(factura, nombre, precio, enStock, fechaCaducidad, conDescuento, descuento);
         this.tipoComida = tipoComida;
         this.ingredientes = ingredientes;
     }

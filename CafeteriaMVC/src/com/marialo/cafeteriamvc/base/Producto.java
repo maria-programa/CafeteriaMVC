@@ -3,10 +3,11 @@ package com.marialo.cafeteriamvc.base;
 import java.time.LocalDate;
 
 public class Producto {
+    private String factura;
     private String nombre;
     private double precio;
-    private LocalDate fechaCaducidad;
     private boolean enStock;
+    private LocalDate fechaCaducidad;
     private boolean conDescuento;
     private int descuento;
 
@@ -14,12 +15,36 @@ public class Producto {
 
     }
 
-    public Producto(String nombre, double precio, LocalDate fechaCaducidad, boolean enStock, boolean conDescuento) {
+    public Producto(String factura, String nombre, double precio) {
+        this.factura = factura;
         this.nombre = nombre;
         this.precio = precio;
-        this.fechaCaducidad = fechaCaducidad;
+    }
+
+    public Producto(String factura, String nombre, double precio, boolean enStock, LocalDate fechaCaducidad) {
+        this.factura = factura;
+        this.nombre = nombre;
+        this.precio = precio;
         this.enStock = enStock;
+        this.fechaCaducidad = fechaCaducidad;
+    }
+
+    public Producto(String factura, String nombre, double precio, boolean enStock, LocalDate fechaCaducidad, boolean conDescuento, int descuento) {
+        this.factura = factura;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.enStock = enStock;
+        this.fechaCaducidad = fechaCaducidad;
         this.conDescuento = conDescuento;
+        this.descuento = descuento;
+    }
+
+    public String getFactura() {
+        return factura;
+    }
+
+    public void setFactura(String factura) {
+        this.factura = factura;
     }
 
     public String getNombre() {
@@ -60,6 +85,14 @@ public class Producto {
 
     public void setConDescuento(boolean conDescuento) {
         this.conDescuento = conDescuento;
+    }
+
+    public int getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
     }
 
     @Override
