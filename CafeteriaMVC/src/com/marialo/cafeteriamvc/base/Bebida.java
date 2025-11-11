@@ -11,18 +11,13 @@ public class Bebida extends Producto {
         this.tipoBebida = tipoBebida;
     }
 
-    public Bebida(String factura, String nombre, double precio, TipoBebida tipoBebida) {
-        super(factura, nombre, precio);
+    public Bebida(String factura, String nombre, double precio, LocalDate fechaCaducidad, TipoBebida tipoBebida) {
+        super(factura, nombre, precio, fechaCaducidad);
         this.tipoBebida = tipoBebida;
     }
 
-    public Bebida(String factura, String nombre, double precio, boolean enStock, LocalDate fechaCaducidad, TipoBebida tipoBebida) {
-        super(factura, nombre, precio, enStock, fechaCaducidad);
-        this.tipoBebida = tipoBebida;
-    }
-
-    public Bebida(String factura, String nombre, double precio, boolean enStock, LocalDate fechaCaducidad, boolean conDescuento, int descuento, TipoBebida tipoBebida) {
-        super(factura, nombre, precio, enStock, fechaCaducidad, conDescuento, descuento);
+    public Bebida(String factura, String nombre, double precio, LocalDate fechaCaducidad, boolean conDescuento, int descuento, TipoBebida tipoBebida) {
+        super(factura, nombre, precio, fechaCaducidad, conDescuento, descuento);
         this.tipoBebida = tipoBebida;
     }
 
@@ -32,5 +27,10 @@ public class Bebida extends Producto {
 
     public void setTipoBebida(TipoBebida tipoBebida) {
         this.tipoBebida = tipoBebida;
+    }
+
+    @Override
+    public String toString() {
+        return  tipoBebida.toString() + " " + super.toString();
     }
 }
