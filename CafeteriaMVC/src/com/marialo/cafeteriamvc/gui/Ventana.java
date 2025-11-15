@@ -1,5 +1,6 @@
 package com.marialo.cafeteriamvc.gui;
 
+import com.github.lgooddatepicker.components.DatePicker;
 import com.marialo.cafeteriamvc.base.Producto;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class Ventana {
     public JRadioButton bebidaRadioButton;
     public JRadioButton comidaRadioButton;
     public JComboBox comboBox1;
-    public JTextField textField1;
+    public JTextField nombreTxt;
     public JLabel tipoLabel;
     public JCheckBox conDescuentoCheckBox;
     public JRadioButton cincoRadioButton;
@@ -21,13 +22,16 @@ public class Ventana {
     public JButton nuevoButton;
     public JButton editarButton;
     public JList list1;
-    private JTextField textField2;
-    private JButton borrarButton;
-    private JList list2;
+    public JTextField facturaTxt;
+    public JButton eliminarButton;
+    public JList list2;
+    public JScrollPane ingredientesScroll;
+    public JLabel ingredientesLbl;
+    public DatePicker fechaCaducidadDatePicker;
 
     public JFrame frame;
-    JMenuItem itemExportar;
-    JMenuItem itemImportar;
+    JMenuItem itemExportarXML;
+    JMenuItem itemImportarXML;
     public DefaultListModel<Producto> dlmProducto;
     public DefaultListModel<ArrayList<String>> dlmIngredientes;
 
@@ -48,14 +52,14 @@ public class Ventana {
     public void crearBarraMenu() {
         JMenuBar barra = new JMenuBar();
         JMenu menu = new JMenu("Opciones");
-        itemExportar = new JMenuItem("Exportar XML");
-        itemImportar = new JMenuItem("Importar XML");
+        itemExportarXML = new JMenuItem("Exportar XML");
+        itemImportarXML = new JMenuItem("Importar XML");
         //me permitirá reconocer el botón
-        itemExportar.setActionCommand("exportar");
-        itemImportar.setActionCommand("importar");
+        itemExportarXML.setActionCommand("exportarxml");
+        itemImportarXML.setActionCommand("importarxml");
 
-        menu.add(itemImportar);
-        menu.add(itemExportar);
+        menu.add(itemImportarXML);
+        menu.add(itemExportarXML);
         barra.add(menu);
         frame.setJMenuBar(barra);
     }

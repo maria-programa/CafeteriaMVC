@@ -84,7 +84,7 @@
           <text value="Nombre"/>
         </properties>
       </component>
-      <component id="7d7ec" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="7d7ec" class="javax.swing.JTextField" binding="nombreTxt">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -102,7 +102,7 @@
           <text value="Fecha de caducidad:"/>
         </properties>
       </component>
-      <component id="c1d24" class="com.github.lgooddatepicker.components.DatePicker">
+      <component id="c1d24" class="com.github.lgooddatepicker.components.DatePicker" binding="fechaCaducidadDatePicker">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -145,7 +145,7 @@
           <text value="15%"/>
         </properties>
       </component>
-      <component id="5640c" class="javax.swing.JLabel">
+      <component id="5640c" class="javax.swing.JLabel" binding="ingredientesLbl">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -215,7 +215,7 @@
           <text value="Factura"/>
         </properties>
       </component>
-      <component id="38f39" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="38f39" class="javax.swing.JTextField" binding="facturaTxt">
         <constraints>
           <grid row="12" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -233,16 +233,16 @@
           <text value="Nuevo"/>
         </properties>
       </component>
-      <component id="fa3f0" class="javax.swing.JButton" binding="borrarButton" default-binding="true">
+      <component id="fa3f0" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
         <constraints>
           <grid row="20" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
-          <text value="Borrar"/>
+          <text value="Eliminar"/>
         </properties>
       </component>
-      <scrollpane id="b7e3b">
+      <scrollpane id="b7e3b" binding="ingredientesScroll">
         <constraints>
           <grid row="10" column="2" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
