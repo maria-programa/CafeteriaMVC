@@ -8,11 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6c62a354-dcd3-4e0b-9835-45c543938b37" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assests/add.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/productos.conf" beforeDir="false" afterPath="$PROJECT_DIR$/productos.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +101,7 @@
       <workItem from="1762972491942" duration="330000" />
       <workItem from="1762973125843" duration="598000" />
       <workItem from="1763134303023" duration="7045000" />
-      <workItem from="1763208584495" duration="16971000" />
+      <workItem from="1763208584495" duration="18116000" />
     </task>
     <servers />
   </component>

@@ -189,7 +189,7 @@ public class CafeteriaModelo {
                 nuevaBebida.setTipoBebida(TipoBebida.valueOf(nodoProducto.getChildNodes().item(6).getTextContent()));
 
                 listaProductos.add(nuevaBebida);
-            } else {
+            } else if (nodoProducto.getTagName().equals("comida")) {
                 nuevaComida = new Comida();
                 nuevaComida.setFactura(nodoProducto.getChildNodes().item(0).getTextContent());
                 nuevaComida.setNombre(nodoProducto.getChildNodes().item(1).getTextContent());
