@@ -3,6 +3,7 @@ package com.marialo.cafeteriamvc.gui;
 import com.marialo.cafeteriamvc.base.Producto;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Ventana {
     private JPanel panel1;
@@ -22,11 +23,13 @@ public class Ventana {
     public JList list1;
     private JTextField textField2;
     private JButton borrarButton;
+    private JList list2;
 
     public JFrame frame;
     JMenuItem itemExportar;
     JMenuItem itemImportar;
     public DefaultListModel<Producto> dlmProducto;
+    public DefaultListModel<ArrayList<String>> dlmIngredientes;
 
     public Ventana() {
         frame = new JFrame("Cafetería");
@@ -60,5 +63,8 @@ public class Ventana {
     public void initComponents() {
         dlmProducto = new DefaultListModel<Producto>();
         list1.setModel(dlmProducto);
+
+        dlmIngredientes = new DefaultListModel<ArrayList<String>>();
+        list2.setModel(dlmIngredientes);
     }
 }

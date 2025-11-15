@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CafeteriaMVC:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6c62a354-dcd3-4e0b-9835-45c543938b37" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assests/add.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Bebida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Bebida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Comida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Comida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Producto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.java" afterDir="false" />
@@ -36,10 +38,10 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="253" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/EditorMVC" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -95,6 +97,10 @@
       <workItem from="1762686450067" duration="2546000" />
       <workItem from="1762785139611" duration="7355000" />
       <workItem from="1762872638730" duration="6870000" />
+      <workItem from="1762961923959" duration="2849000" />
+      <workItem from="1762972491942" duration="330000" />
+      <workItem from="1762973125843" duration="598000" />
+      <workItem from="1763134303023" duration="7045000" />
     </task>
     <servers />
   </component>
