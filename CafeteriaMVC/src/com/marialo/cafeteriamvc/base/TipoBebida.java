@@ -1,7 +1,7 @@
 package com.marialo.cafeteriamvc.base;
 
 public enum TipoBebida {
-    CAFE("Cafe"),
+    CAFE("Café"),
     TE("Té"),
     INFUSION("Infusión"),
     ZUMO("Zumo"),

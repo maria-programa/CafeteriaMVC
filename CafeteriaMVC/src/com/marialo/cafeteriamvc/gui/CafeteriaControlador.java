@@ -73,17 +73,10 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
         vista.itemExportarXML.addActionListener(listener);
         vista.itemImportarXML.addActionListener(listener);
 
-        vista.bebidaRadioButton.setActionCommand("bebida");
-        vista.comidaRadioButton.setActionCommand("comida");
         vista.bebidaRadioButton.addActionListener(listener);
         vista.comidaRadioButton.addActionListener(listener);
 
-        vista.conDescuentoCheckBox.setActionCommand("conDescuento");
         vista.conDescuentoCheckBox.addActionListener(listener);
-
-        vista.cincoRadioButton.setActionCommand("descuento");
-        vista.diezRadioButton.setActionCommand("descuento");
-        vista.quinceRadioButton.setActionCommand("descuento");
         vista.cincoRadioButton.addActionListener(listener);
         vista.diezRadioButton.addActionListener(listener);
         vista.quinceRadioButton.addActionListener(listener);
@@ -155,13 +148,13 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
             case "importarxml":
                 importarXML();
                 break;
-            case "bebida":
-            case "comida":
+            case "Bebida":
+            case "Comida":
                 actualizarVisibilidadIngredientes();
                 actualizarComboBox();
                 limpiarCampos();
                 break;
-            case "conDescuento":
+            case "Descuento":
                 actualizarVisibilidadDescuentos();
                 break;
         }
@@ -299,14 +292,12 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
     }
 
     private void cargarDatosProducto(Producto producto) {
-        // Cargar datos básicos
         vista.facturaTxt.setText(producto.getFactura());
         vista.nombreTxt.setText(producto.getNombre());
         vista.precioTxt.setText(String.valueOf(producto.getPrecio()));
         vista.fechaCaducidadDatePicker.setDate(producto.getFechaCaducidad());
         vista.conDescuentoCheckBox.setSelected(producto.isConDescuento());
 
-        // Cargar descuento
         if (producto.isConDescuento()) {
             if (producto.getDescuento() == 5) {
                 vista.cincoRadioButton.setSelected(true);
@@ -336,9 +327,9 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
                 vista.dlmIngredientes.addElement(ingredienteList);
             }
         }
-
         actualizarVisibilidadIngredientes();
         actualizarVisibilidadDescuentos();
+        actualizarComboBox();
     }
 
     private void aceptar() {

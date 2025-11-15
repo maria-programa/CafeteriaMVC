@@ -80,7 +80,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Nº de venta: " + factura + "-> " + nombre + " " + precio + "€" + "\nCaduca en: " + fechaCaducidad
-                + (conDescuento ? "\nTiene un descuento del " + descuento + "%" : "\nNo tiene descuento");
+        return "Nº de venta: " + factura + " -> " + nombre + " " + precio + "€" + " Caduca en: " + fechaCaducidad
+                + (conDescuento ? " Tiene un descuento del " + descuento + "%" : " No tiene descuento");
     }
 }

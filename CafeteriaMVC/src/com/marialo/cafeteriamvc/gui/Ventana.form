@@ -25,6 +25,8 @@
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:35px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
@@ -48,9 +50,11 @@
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:96px:noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="524"/>
+      <xy x="20" y="20" width="500" height="535"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-4936275"/>
+    </properties>
     <border type="empty">
       <size top="8" left="16" bottom="8" right="16"/>
     </border>
@@ -61,6 +65,7 @@
           <forms/>
         </constraints>
         <properties>
+          <foreground color="-13229277"/>
           <text value="Producto:"/>
         </properties>
       </component>
@@ -70,6 +75,8 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <background color="-4936275"/>
+          <foreground color="-13229277"/>
           <text value="Bebida"/>
         </properties>
       </component>
@@ -79,6 +86,7 @@
           <forms/>
         </constraints>
         <properties>
+          <foreground color="-13229277"/>
           <text value="Tipo:"/>
         </properties>
       </component>
@@ -88,6 +96,7 @@
           <forms/>
         </constraints>
         <properties>
+          <autoscrolls value="false"/>
           <model/>
         </properties>
       </component>
@@ -97,6 +106,7 @@
           <forms/>
         </constraints>
         <properties>
+          <foreground color="-13229277"/>
           <text value="Nombre"/>
         </properties>
       </component>
@@ -115,6 +125,7 @@
           <forms/>
         </constraints>
         <properties>
+          <foreground color="-13229277"/>
           <text value="Fecha de caducidad:"/>
         </properties>
       </component>
@@ -123,7 +134,9 @@
           <grid row="8" column="2" row-span="1" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-4936275"/>
+        </properties>
       </component>
       <component id="4e074" class="javax.swing.JCheckBox" binding="conDescuentoCheckBox" default-binding="true">
         <constraints>
@@ -131,7 +144,9 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Con descuento"/>
+          <background color="-4936275"/>
+          <foreground color="-13229277"/>
+          <text value="Descuento"/>
         </properties>
       </component>
       <component id="4dea1" class="javax.swing.JRadioButton" binding="cincoRadioButton">
@@ -140,6 +155,8 @@
           <forms/>
         </constraints>
         <properties>
+          <background color="-4936275"/>
+          <foreground color="-13229277"/>
           <text value="5%"/>
         </properties>
       </component>
@@ -149,6 +166,8 @@
           <forms/>
         </constraints>
         <properties>
+          <background color="-4936275"/>
+          <foreground color="-13229277"/>
           <text value="10%"/>
         </properties>
       </component>
@@ -158,6 +177,8 @@
           <forms/>
         </constraints>
         <properties>
+          <background color="-4936275"/>
+          <foreground color="-13229277"/>
           <text value="15%"/>
         </properties>
       </component>
@@ -167,7 +188,8 @@
           <forms/>
         </constraints>
         <properties>
-          <text value="Ingredientes: "/>
+          <foreground color="-13229277"/>
+          <text value="Ingrediente: "/>
         </properties>
       </component>
       <component id="9ef8e" class="javax.swing.JTextField" binding="ingredientesTxt">
@@ -181,10 +203,13 @@
       </component>
       <component id="9513d" class="javax.swing.JButton" binding="annadirButton">
         <constraints>
-          <grid row="10" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <background color="-8037541"/>
+          <borderPainted value="false"/>
+          <foreground color="-1123659"/>
           <maximumSize width="30" height="30"/>
           <minimumSize width="30" height="30"/>
           <text value="+"/>
@@ -196,16 +221,18 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <background color="-4936275"/>
+          <foreground color="-13229277"/>
           <text value="Comida"/>
         </properties>
       </component>
       <scrollpane id="1d2fe">
         <constraints>
-          <grid row="18" column="2" row-span="7" col-span="7" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="18" column="2" row-span="9" col-span="7" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties/>
-        <border type="none"/>
+        <border type="empty"/>
         <children>
           <component id="94105" class="javax.swing.JList" binding="listaProductos">
             <constraints/>
@@ -221,7 +248,12 @@
           <forms/>
         </constraints>
         <properties>
+          <background color="-8037541"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="true"/>
+          <foreground color="-460558"/>
           <text value="Nuevo"/>
+          <toolTipText value=""/>
         </properties>
       </component>
       <scrollpane id="b7e3b" binding="ingredientesScroll">
@@ -230,7 +262,7 @@
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties/>
-        <border type="none"/>
+        <border type="empty"/>
         <children>
           <component id="a2166" class="javax.swing.JList" binding="listaIngredientes">
             <constraints/>
@@ -244,12 +276,13 @@
           <forms/>
         </constraints>
         <properties>
+          <foreground color="-13229277"/>
           <text value="Código de venta:"/>
         </properties>
       </component>
       <component id="38f39" class="javax.swing.JTextField" binding="facturaTxt">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="2" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <forms defaultalign-horz="false"/>
@@ -262,6 +295,7 @@
           <forms/>
         </constraints>
         <properties>
+          <foreground color="-13229277"/>
           <text value="Precio:"/>
         </properties>
       </component>
@@ -278,7 +312,7 @@
       </component>
       <grid id="1ceee" binding="cardPanel" layout-manager="CardLayout" hgap="0" vgap="0">
         <constraints>
-          <grid row="26" column="2" row-span="11" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="28" column="2" row-span="11" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties/>
@@ -294,7 +328,9 @@
             <constraints>
               <card name="Card1"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-4936275"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="7aa20" class="javax.swing.JButton" binding="cancelarButton" default-binding="true">
@@ -303,6 +339,9 @@
                   <forms/>
                 </constraints>
                 <properties>
+                  <background color="-9607578"/>
+                  <borderPainted value="false"/>
+                  <foreground color="-460558"/>
                   <text value="Cancelar"/>
                 </properties>
               </component>
@@ -312,6 +351,9 @@
                   <forms/>
                 </constraints>
                 <properties>
+                  <background color="-1123659"/>
+                  <borderPainted value="false"/>
+                  <foreground color="-13229277"/>
                   <text value="Aceptar"/>
                 </properties>
               </component>
@@ -331,15 +373,21 @@
           <forms/>
         </constraints>
         <properties>
+          <background color="-8037541"/>
+          <borderPainted value="false"/>
+          <foreground color="-460558"/>
           <text value="Editar"/>
         </properties>
       </component>
       <component id="fa3f0" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
         <constraints>
-          <grid row="24" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="26" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
+          <background color="-13229277"/>
+          <borderPainted value="false"/>
+          <foreground color="-1123659"/>
           <text value="Eliminar"/>
         </properties>
       </component>

@@ -46,6 +46,6 @@ public class Comida extends Producto {
 
     @Override
     public String toString() {
-        return tipoComida + " " + super.toString() + "\nIngredientes: " + ingredientes;
+        return tipoComida + " " + super.toString() + " Ingredientes: " + ingredientes;
     }
 }

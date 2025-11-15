@@ -9,8 +9,11 @@
     <list default="true" id="6c62a354-dcd3-4e0b-9835-45c543938b37" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/productos.conf" beforeDir="false" afterPath="$PROJECT_DIR$/productos.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Comida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Comida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/TipoBebida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/base/TipoBebida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +37,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="253" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="251" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -101,7 +104,7 @@
       <workItem from="1762972491942" duration="330000" />
       <workItem from="1762973125843" duration="598000" />
       <workItem from="1763134303023" duration="7045000" />
-      <workItem from="1763208584495" duration="18116000" />
+      <workItem from="1763208584495" duration="23297000" />
     </task>
     <servers />
   </component>
