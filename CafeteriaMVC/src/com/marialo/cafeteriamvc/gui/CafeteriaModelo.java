@@ -45,6 +45,7 @@ public class CafeteriaModelo {
         } else {
             nuevaComida = new Comida(factura, nombre, precio, fechaCaducidad, tipoComida, ingredientes);
         }
+        listaProductos.add(nuevaComida);
     }
 
     public Producto existeProducto(String factura) {

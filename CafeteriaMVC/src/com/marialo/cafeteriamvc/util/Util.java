@@ -13,6 +13,10 @@ public class Util {
         return JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.YES_NO_OPTION);
     }
 
+    public static void mensajeInfo(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Información", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public static JFileChooser crearSelectorFichero(File rutaDefecto, String tipoArchivos, String extension) {
         JFileChooser selectorFichero = new JFileChooser();
 

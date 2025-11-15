@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Ventana {
-    private JPanel panel1;
+    public JPanel panel1;
     public JRadioButton bebidaRadioButton;
     public JRadioButton comidaRadioButton;
     public JComboBox comboBox1;
@@ -21,13 +21,14 @@ public class Ventana {
     public JButton annadirButton;
     public JButton nuevoButton;
     public JButton editarButton;
-    public JList list1;
+    public JList listaProductos;
     public JTextField facturaTxt;
     public JButton eliminarButton;
-    public JList list2;
+    public JList listaIngredientes;
     public JScrollPane ingredientesScroll;
     public JLabel ingredientesLbl;
     public DatePicker fechaCaducidadDatePicker;
+    public JTextField precioTxt;
 
     public JFrame frame;
     JMenuItem itemExportarXML;
@@ -66,9 +67,9 @@ public class Ventana {
 
     public void initComponents() {
         dlmProducto = new DefaultListModel<Producto>();
-        list1.setModel(dlmProducto);
+        listaProductos.setModel(dlmProducto);
 
         dlmIngredientes = new DefaultListModel<ArrayList<String>>();
-        list2.setModel(dlmIngredientes);
+        listaIngredientes.setModel(dlmIngredientes);
     }
 }
