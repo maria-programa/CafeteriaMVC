@@ -29,6 +29,9 @@ public class Ventana {
     public JLabel ingredientesLbl;
     public DatePicker fechaCaducidadDatePicker;
     public JTextField precioTxt;
+    public JButton cancelarButton;
+    public JButton aceptarButton;
+    public JPanel cardPanel;
 
     public JFrame frame;
     JMenuItem itemExportarXML;
@@ -43,11 +46,9 @@ public class Ventana {
         frame.pack();
         frame.setVisible(true);
         crearBarraMenu();
-        frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
 
         initComponents();
-
     }
 
     public void crearBarraMenu() {
