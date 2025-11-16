@@ -84,6 +84,10 @@ public class CafeteriaModelo {
         producto.setIngredientes(ingredientes);
     }
 
+    public void editarIngredientes(String ingrediente) {
+
+    }
+
     public void exportarXML(File fichero) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();

@@ -2,17 +2,11 @@ package com.marialo.cafeteriamvc.gui;
 
 import com.marialo.cafeteriamvc.base.*;
 import com.marialo.cafeteriamvc.util.Util;
-import org.xml.sax.SAXException;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class CafeteriaControlador implements ActionListener, ListSelectionListener, WindowListener {
+public class CafeteriaControlador implements ActionListener, ListSelectionListener, WindowListener, MouseListener {
     private Ventana vista;
     private CafeteriaModelo modelo;
     private File ultimaRutaExportada;
@@ -39,6 +33,7 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
         addActionListener(this);
         addWindowListener(this);
         addListSelectionListener(this);
+        addMouseListener(this);
 
         vista.bebidaRadioButton.setSelected(true);
         vista.cardPanel.setVisible(false);
@@ -85,6 +80,7 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
         vista.editarButton.addActionListener(listener);
         vista.eliminarButton.addActionListener(listener);
         vista.annadirButton.addActionListener(listener);
+        vista.eliminarIngredienteBtn.addActionListener(listener);
         vista.aceptarButton.addActionListener(listener);
         vista.cancelarButton.addActionListener(listener);
     }
@@ -96,6 +92,10 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
     private void addListSelectionListener(ListSelectionListener listener) {
         vista.listaProductos.addListSelectionListener(listener);
         vista.listaIngredientes.addListSelectionListener(listener);
+    }
+
+    private void addMouseListener(MouseListener listener) {
+        vista.listaIngredientes.addMouseListener(listener);
     }
 
     public void refrescar() {
@@ -140,7 +140,11 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
                 eliminarProducto();
                 break;
             case "+":
+            case "Actualizar":
                 annadirIngrediente();
+                break;
+            case "-":
+                eliminarIngrediente();
                 break;
             case "exportarxml":
                 exportarXML();
@@ -161,13 +165,97 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
     }
 
     private void altaProducto() {
-        if (hayCamposVacios()) {
-            Util.mensajeError("Hay campos vacíos");
+        crearProducto(false);
+    }
+
+    private void editarProducto() {
+        Producto productoSeleccionado = (Producto) vista.listaProductos.getSelectedValue();
+        if (productoSeleccionado == null) {
+            Util.mensajeError("Seleccione un producto para editar");
+            return;
+        }
+        cargarDatosProducto(productoSeleccionado);
+        vista.cardPanel.setVisible(true);
+    }
+
+    private void cargarDatosProducto(Producto producto) {
+        if (producto instanceof Bebida) {
+            vista.bebidaRadioButton.setSelected(true);
+        } else if (producto instanceof Comida) {
+            vista.comidaRadioButton.setSelected(true);
+        }
+
+        actualizarVisibilidadIngredientes();
+        actualizarVisibilidadDescuentos();
+        actualizarComboBox();
+
+        vista.facturaTxt.setText(producto.getFactura());
+        vista.nombreTxt.setText(producto.getNombre());
+        vista.precioTxt.setText(String.valueOf(producto.getPrecio()));
+        vista.fechaCaducidadDatePicker.setDate(producto.getFechaCaducidad());
+        vista.conDescuentoCheckBox.setSelected(producto.isConDescuento());
+
+        if (producto.isConDescuento()) {
+            if (producto.getDescuento() == 5) {
+                vista.cincoRadioButton.setSelected(true);
+            } else if (producto.getDescuento() == 10) {
+                vista.diezRadioButton.setSelected(true);
+            } else if (producto.getDescuento() == 15) {
+                vista.quinceRadioButton.setSelected(true);
+            }
+        }
+
+        if (producto instanceof Bebida) {
+
+            Bebida bebida = (Bebida) producto;
+            vista.comboBox1.setSelectedItem(bebida.getTipoBebida().getNombre());
+
+            vista.dlmIngredientes.clear();
+
+        } else if (producto instanceof Comida) {
+
+            Comida comida = (Comida) producto;
+            vista.comboBox1.setSelectedItem(comida.getTipoComida().getNombre());
+
+            vista.dlmIngredientes.clear();
+            for (String ingrediente : comida.getIngredientes()) {
+                ArrayList<String> ingredienteList = new ArrayList<>();
+                ingredienteList.add(ingrediente);
+                vista.dlmIngredientes.addElement(ingredienteList);
+            }
+        }
+    }
+
+    private void aceptar() {
+        crearProducto(true);
+    }
+
+    private void cancelar() {
+        Util.mensajeInfo("Acción cancelada");
+    }
+
+    private void eliminarProducto() {
+        Producto productoSeleccionado = (Producto) vista.listaProductos.getSelectedValue();
+        if (productoSeleccionado == null) {
+            Util.mensajeError("Seleccione un producto para eliminar");
             return;
         }
 
-        if (modelo.existeProducto(vista.facturaTxt.getText()) != null) {
-            Util.mensajeError("El código de venta " + vista.facturaTxt.getText() + " ya existe");
+        int respuesta = Util.mensajeConfirmacion(
+                "¿Está seguro de eliminar el producto: " + productoSeleccionado.getNombre() + "?",
+                "Confirmar eliminación"
+        );
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            modelo.eliminarProducto(productoSeleccionado);
+            refrescar();
+            Util.mensajeInfo("Producto eliminado correctamente");
+        }
+    }
+
+    private void crearProducto(boolean editando) {
+        if (hayCamposVacios()) {
+            Util.mensajeError("Hay campos vacíos");
             return;
         }
 
@@ -179,12 +267,20 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
             boolean conDescuento = vista.conDescuentoCheckBox.isSelected();
             int descuento = obtenerDescuento();
 
+            if (!editando && modelo.existeProducto(factura) != null) {
+                Util.mensajeError("El código de venta " + factura + " ya existe");
+                return;
+            }
+
             if (vista.bebidaRadioButton.isSelected()) {
                 TipoBebida tipoBebida = TipoBebida.fromString(vista.comboBox1.getSelectedItem().toString());
-                modelo.altaBebida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoBebida);
+                if (editando) {
+                    modelo.editarBebida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoBebida);
+                } else {
+                    modelo.altaBebida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoBebida);
+                }
             } else {
                 TipoComida tipoComida = TipoComida.fromString(vista.comboBox1.getSelectedItem().toString());
-
                 ArrayList<String> ingredientes = obtenerIngredientesDeLista();
 
                 if (ingredientes.isEmpty()) {
@@ -192,17 +288,21 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
                     return;
                 }
 
-                modelo.altaComida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoComida, ingredientes);
+                if (editando) {
+                    modelo.editarComida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoComida, ingredientes);
+                } else {
+                    modelo.altaComida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoComida, ingredientes);
+                }
             }
 
             refrescar();
             limpiarCampos();
-            Util.mensajeInfo("Producto añadido correctamente");
+            Util.mensajeInfo("Producto " + (editando ? "editado" : "añadido") + " correctamente");
 
         } catch (NumberFormatException ex) {
             Util.mensajeError("El precio debe ser un número válido");
         } catch (Exception ex) {
-            Util.mensajeError("Error al añadir producto: " + ex.getMessage());
+            Util.mensajeError("Error al " + (editando ? "editar" : "añadir") + " producto: " + ex.getMessage());
         }
     }
 
@@ -229,13 +329,53 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
 
     private void annadirIngrediente() {
         String ingrediente = vista.ingredientesTxt.getText().trim();
-        if (!ingrediente.isEmpty()) {
-            ArrayList<String> ingredienteList = new ArrayList<>();
-            ingredienteList.add(ingrediente);
-            vista.dlmIngredientes.addElement(ingredienteList);
-            vista.ingredientesTxt.setText("");
-        } else {
+        if (ingrediente.isEmpty()) {
             Util.mensajeError("El ingrediente no puede estar vacío");
+            return;
+        }
+
+        int indiceSeleccionado = vista.listaIngredientes.getSelectedIndex();
+
+        if (indiceSeleccionado != -1) {
+            ArrayList<String> ingredienteActualizado = new ArrayList<>();
+            ingredienteActualizado.add(ingrediente);
+            vista.dlmIngredientes.set(indiceSeleccionado, ingredienteActualizado);
+        } else {
+            for (int i = 0; i < vista.dlmIngredientes.getSize(); i++) {
+                Object elemento = vista.dlmIngredientes.getElementAt(i);
+                if (elemento instanceof ArrayList) {
+                    ArrayList<String> lista = (ArrayList<String>) elemento;
+                    if (!lista.isEmpty() && lista.get(0).equalsIgnoreCase(ingrediente)) {
+                        Util.mensajeError("Este ingrediente ya existe en la lista");
+                        return;
+                    }
+                }
+            }
+
+            ArrayList<String> nuevoIngrediente = new ArrayList<>();
+            nuevoIngrediente.add(ingrediente);
+            vista.dlmIngredientes.addElement(nuevoIngrediente);
+        }
+
+        vista.ingredientesTxt.setText("");
+        vista.listaIngredientes.clearSelection();
+        vista.annadirButton.setText("+");
+    }
+
+    private void eliminarIngrediente() {
+        int indiceSeleccionado = vista.listaIngredientes.getSelectedIndex();
+        if (indiceSeleccionado != -1) {
+            int respuesta = Util.mensajeConfirmacion(
+                    "¿Está seguro de eliminar este ingrediente?",
+                    "Confirmar eliminación"
+            );
+
+            if (respuesta == JOptionPane.YES_OPTION) {
+                vista.dlmIngredientes.remove(indiceSeleccionado);
+                vista.ingredientesTxt.setText("");
+            }
+        } else {
+            Util.mensajeError("Seleccione un ingrediente para eliminar");
         }
     }
 
@@ -247,6 +387,8 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
         vista.listaIngredientes.setVisible(esComida);
         vista.ingredientesScroll.setVisible(esComida);
         vista.ingredientesLbl.setVisible(esComida);
+        vista.eliminarIngredienteBtn.setVisible(esComida);
+        vista.eliminarIngredienteLbl.setVisible(esComida);
 
         vista.panel1.revalidate();
         vista.panel1.repaint();
@@ -278,127 +420,6 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
 
         if (conDescuento) {
             vista.cincoRadioButton.setSelected(true);
-        }
-    }
-
-    private void editarProducto() {
-        Producto productoSeleccionado = (Producto) vista.listaProductos.getSelectedValue();
-        if (productoSeleccionado == null) {
-            Util.mensajeError("Seleccione un producto para editar");
-            return;
-        }
-        cargarDatosProducto(productoSeleccionado);
-        vista.cardPanel.setVisible(true);
-    }
-
-    private void cargarDatosProducto(Producto producto) {
-        vista.facturaTxt.setText(producto.getFactura());
-        vista.nombreTxt.setText(producto.getNombre());
-        vista.precioTxt.setText(String.valueOf(producto.getPrecio()));
-        vista.fechaCaducidadDatePicker.setDate(producto.getFechaCaducidad());
-        vista.conDescuentoCheckBox.setSelected(producto.isConDescuento());
-
-        if (producto.isConDescuento()) {
-            if (producto.getDescuento() == 5) {
-                vista.cincoRadioButton.setSelected(true);
-            } else if (producto.getDescuento() == 10) {
-                vista.diezRadioButton.setSelected(true);
-            } else if (producto.getDescuento() == 15) {
-                vista.quinceRadioButton.setSelected(true);
-            }
-        }
-
-        if (producto instanceof Bebida) {
-            vista.bebidaRadioButton.setSelected(true);
-            Bebida bebida = (Bebida) producto;
-            vista.comboBox1.setSelectedItem(bebida.getTipoBebida().getNombre());
-
-            vista.dlmIngredientes.clear();
-
-        } else if (producto instanceof Comida) {
-            vista.comidaRadioButton.setSelected(true);
-            Comida comida = (Comida) producto;
-            vista.comboBox1.setSelectedItem(comida.getTipoComida().getNombre());
-
-            vista.dlmIngredientes.clear();
-            for (String ingrediente : comida.getIngredientes()) {
-                ArrayList<String> ingredienteList = new ArrayList<>();
-                ingredienteList.add(ingrediente);
-                vista.dlmIngredientes.addElement(ingredienteList);
-            }
-        }
-        actualizarVisibilidadIngredientes();
-        actualizarVisibilidadDescuentos();
-        actualizarComboBox();
-    }
-
-    private void aceptar() {
-        Producto productoSeleccionado = (Producto) vista.listaProductos.getSelectedValue();
-        if (hayCamposVacios()) {
-            Util.mensajeError("Hay campos vacíos");
-            return;
-        }
-
-        try {
-            String factura = vista.facturaTxt.getText();
-            String nombre = vista.nombreTxt.getText();
-            double precio = Double.parseDouble(vista.precioTxt.getText());
-            LocalDate fechaCaducidad = vista.fechaCaducidadDatePicker.getDate();
-            boolean conDescuento = vista.conDescuentoCheckBox.isSelected();
-            int descuento = obtenerDescuento();
-
-            Producto productoExistente = modelo.existeProducto(factura);
-            if (productoExistente != null && !productoExistente.getFactura().equals(productoSeleccionado.getFactura())) {
-                Util.mensajeError("El código de venta " + factura + " ya existe en otro producto");
-                return;
-            }
-
-            if (productoSeleccionado instanceof Bebida && vista.bebidaRadioButton.isSelected()) {
-                TipoBebida tipoBebida = TipoBebida.fromString(vista.comboBox1.getSelectedItem().toString());
-                modelo.editarBebida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoBebida);
-
-            } else if (productoSeleccionado instanceof Comida && vista.comidaRadioButton.isSelected()) {
-                TipoComida tipoComida = TipoComida.fromString(vista.comboBox1.getSelectedItem().toString());
-                ArrayList<String> ingredientes = obtenerIngredientesDeLista();
-
-                if (ingredientes.isEmpty()) {
-                    Util.mensajeError("Debe añadir al menos un ingrediente");
-                    return;
-                }
-
-                modelo.editarComida(factura, nombre, precio, fechaCaducidad, conDescuento, descuento, tipoComida, ingredientes);
-
-            }
-            refrescar();
-            Util.mensajeInfo("Producto editado correctamente");
-
-        } catch (NumberFormatException ex) {
-            Util.mensajeError("El precio debe ser un número válido");
-        } catch (Exception ex) {
-            Util.mensajeError("Error al editar producto: " + ex.getMessage());
-        }
-    }
-
-    private void cancelar() {
-        Util.mensajeInfo("Acción cancelada");
-    }
-
-    private void eliminarProducto() {
-        Producto productoSeleccionado = (Producto) vista.listaProductos.getSelectedValue();
-        if (productoSeleccionado == null) {
-            Util.mensajeError("Seleccione un producto para eliminar");
-            return;
-        }
-
-        int respuesta = Util.mensajeConfirmacion(
-                "¿Está seguro de eliminar el producto: " + productoSeleccionado.getNombre() + "?",
-                "Confirmar eliminación"
-        );
-
-        if (respuesta == JOptionPane.YES_OPTION) {
-            modelo.eliminarProducto(productoSeleccionado);
-            refrescar();
-            Util.mensajeInfo("Producto eliminado correctamente");
         }
     }
 
@@ -439,15 +460,16 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
         }
     }
 
-
     @Override
-    public void windowClosed(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-
+    public void mouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 2) { // Doble clic
+            ArrayList<String> ingredienteSeleccionado = (ArrayList<String>) vista.listaIngredientes.getSelectedValue();
+            if (ingredienteSeleccionado != null && !ingredienteSeleccionado.isEmpty()) {
+                vista.ingredientesTxt.setText(ingredienteSeleccionado.get(0));
+                vista.annadirButton.setText("Actualizar");
+                vista.ingredientesTxt.requestFocus();
+            }
+        }
     }
 
     @Override
@@ -463,6 +485,16 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
             }
             System.exit(0);
         }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
     }
 
     @Override
@@ -487,6 +519,26 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 }

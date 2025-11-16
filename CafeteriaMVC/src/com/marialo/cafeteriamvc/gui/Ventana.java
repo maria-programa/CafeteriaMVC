@@ -4,6 +4,7 @@ import com.github.lgooddatepicker.components.DatePicker;
 import com.marialo.cafeteriamvc.base.Producto;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Ventana {
@@ -32,6 +33,8 @@ public class Ventana {
     public JButton cancelarButton;
     public JButton aceptarButton;
     public JPanel cardPanel;
+    public JButton eliminarIngredienteBtn;
+    public JLabel eliminarIngredienteLbl;
 
     public JFrame frame;
     JMenuItem itemExportarXML;
@@ -62,7 +65,10 @@ public class Ventana {
 
         menu.add(itemImportarXML);
         menu.add(itemExportarXML);
+        menu.setForeground(new Color(238,218,181));
+
         barra.add(menu);
+        barra.setBackground(new Color(54,35,35));
         frame.setJMenuBar(barra);
     }
 
