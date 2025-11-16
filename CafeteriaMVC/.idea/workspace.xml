@@ -7,10 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c62a354-dcd3-4e0b-9835-45c543938b37" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/coffee-beans.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/productos.conf" beforeDir="false" afterPath="$PROJECT_DIR$/productos.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/CafeteriaModelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/marialo/cafeteriamvc/gui/Ventana.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +41,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assests" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -103,7 +106,8 @@
       <workItem from="1762973125843" duration="598000" />
       <workItem from="1763134303023" duration="7045000" />
       <workItem from="1763208584495" duration="25604000" />
-      <workItem from="1763290627933" duration="10820000" />
+      <workItem from="1763290627933" duration="11035000" />
+      <workItem from="1763314276574" duration="7758000" />
     </task>
     <servers />
   </component>

@@ -26,6 +26,10 @@ public class CafeteriaModelo {
         return listaProductos;
     }
 
+    public String generarCodigoVenta() {
+        return "VTA-" + (listaProductos.size() + 1);
+    }
+
     public void altaBebida(String factura, String nombre, double precio, LocalDate fechaCaducidad, boolean conDescuento
             , int descuento, TipoBebida tipoBebida) {
         Bebida nuevaBebida;
@@ -48,7 +52,7 @@ public class CafeteriaModelo {
         listaProductos.add(nuevaComida);
     }
 
-    public Producto existeProducto(String factura) {
+    public Producto obtenerUnProducto(String factura) {
         for (Producto p : listaProductos) {
             if (p.getFactura().equals(factura)) {
                 return p;
@@ -63,7 +67,7 @@ public class CafeteriaModelo {
 
     public void editarBebida(String factura, String nombre, double precio, LocalDate fechaCaducidad, boolean conDescuento
             , int descuento, TipoBebida tipoBebida) {
-        Bebida producto = (Bebida) existeProducto(factura);
+        Bebida producto = (Bebida) obtenerUnProducto(factura);
         producto.setNombre(nombre);
         producto.setPrecio(precio);
         producto.setFechaCaducidad(fechaCaducidad);
@@ -74,7 +78,7 @@ public class CafeteriaModelo {
 
     public void editarComida(String factura, String nombre, double precio, LocalDate fechaCaducidad, boolean conDescuento
             , int descuento, TipoComida tipoComida, ArrayList<String> ingredientes) {
-        Comida producto = (Comida) existeProducto(factura);
+        Comida producto = (Comida) obtenerUnProducto(factura);
         producto.setNombre(nombre);
         producto.setPrecio(precio);
         producto.setFechaCaducidad(fechaCaducidad);
@@ -82,10 +86,6 @@ public class CafeteriaModelo {
         producto.setDescuento(descuento);
         producto.setTipoComida(tipoComida);
         producto.setIngredientes(ingredientes);
-    }
-
-    public void editarIngredientes(String ingrediente) {
-
     }
 
     public void exportarXML(File fichero) throws ParserConfigurationException, TransformerException {

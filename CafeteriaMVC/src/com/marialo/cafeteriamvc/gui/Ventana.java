@@ -35,6 +35,11 @@ public class Ventana {
     public JPanel cardPanel;
     public JButton eliminarIngredienteBtn;
     public JLabel eliminarIngredienteLbl;
+    public JLabel facturaLbl;
+    public JLabel nombreLbl;
+    public JLabel fechaCaducidadLbl;
+    public JLabel precioLbl;
+    public JLabel listaIngredientesLbl;
 
     public JFrame frame;
     JMenuItem itemExportarXML;
@@ -42,14 +47,18 @@ public class Ventana {
     public DefaultListModel<Producto> dlmProducto;
     public DefaultListModel<ArrayList<String>> dlmIngredientes;
 
+
     public Ventana() {
         frame = new JFrame("Cafetería");
         frame.setContentPane(panel1);
+        ImageIcon img = new ImageIcon("./assets/coffee-beans.png");
+        frame.setIconImage(img.getImage());
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        crearBarraMenu();
         frame.pack();
         frame.setVisible(true);
-        crearBarraMenu();
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
 
         initComponents();
     }
