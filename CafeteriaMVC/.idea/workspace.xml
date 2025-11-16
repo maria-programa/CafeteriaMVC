@@ -34,7 +34,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="258" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="271" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
@@ -103,7 +103,7 @@
       <workItem from="1762973125843" duration="598000" />
       <workItem from="1763134303023" duration="7045000" />
       <workItem from="1763208584495" duration="25604000" />
-      <workItem from="1763290627933" duration="6654000" />
+      <workItem from="1763290627933" duration="10820000" />
     </task>
     <servers />
   </component>

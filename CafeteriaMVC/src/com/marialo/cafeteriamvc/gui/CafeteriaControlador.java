@@ -175,6 +175,7 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
             return;
         }
         cargarDatosProducto(productoSeleccionado);
+        actualizarVisibilidadBotones(false);
         vista.cardPanel.setVisible(true);
     }
 
@@ -228,10 +229,19 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
 
     private void aceptar() {
         crearProducto(true);
+        actualizarVisibilidadBotones(true);
     }
 
     private void cancelar() {
         Util.mensajeInfo("Acción cancelada");
+        vista.listaProductos.clearSelection();
+        actualizarVisibilidadBotones(true);
+    }
+
+    private void actualizarVisibilidadBotones(boolean visible) {
+            vista.nuevoButton.setVisible(visible);
+            vista.editarButton.setVisible(visible);
+            vista.eliminarButton.setVisible(visible);
     }
 
     private void eliminarProducto() {
@@ -359,7 +369,6 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
 
         vista.ingredientesTxt.setText("");
         vista.listaIngredientes.clearSelection();
-        vista.annadirButton.setText("+");
     }
 
     private void eliminarIngrediente() {
