@@ -380,7 +380,7 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
     }
 
     private void actualizarVisibilidadIngredientes() {
-        boolean esComida = vista.comidaRadioButton.isSelected();
+                boolean esComida = vista.comidaRadioButton.isSelected();
 
         vista.ingredientesTxt.setVisible(esComida);
         vista.annadirButton.setVisible(esComida);
@@ -393,9 +393,7 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
         vista.panel1.revalidate();
         vista.panel1.repaint();
 
-        if (!esComida) {
-            vista.dlmIngredientes.clear();
-        }
+        vista.frame.pack();
     }
 
     private void actualizarComboBox() {
@@ -462,7 +460,7 @@ public class CafeteriaControlador implements ActionListener, ListSelectionListen
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getClickCount() == 2) { // Doble clic
+        if (e.getClickCount() == 2) {
             ArrayList<String> ingredienteSeleccionado = (ArrayList<String>) vista.listaIngredientes.getSelectedValue();
             if (ingredienteSeleccionado != null && !ingredienteSeleccionado.isEmpty()) {
                 vista.ingredientesTxt.setText(ingredienteSeleccionado.get(0));
